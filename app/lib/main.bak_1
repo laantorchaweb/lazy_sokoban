@@ -1,0 +1,52 @@
+'use strict';
+
+var utils    = require('./utils'),
+    domReady = utils.domReady;
+console.log(utils)
+var c = createjs;
+
+console.log('Game Started: EaselJS version:', c.EaselJS.version);
+
+domReady(function() {
+    var stage     = new c.Stage('main'),
+        circle    = new c.Shape(),
+        square    = new c.Shape(),
+        introText = new c.Text('Welcome to the game.', '20px Arial', '#ff7700'),
+        group     = new c.Container();
+
+    group.x    = 200;
+    group.y    = 175;
+    group.regX = 100;
+    group.regY = 100;
+    stage.addChild(group);
+
+    group.on('tick', function(event) {
+        this.rotation -= 1;
+    });
+
+    circle.graphics.beginFill('green').drawCircle(0, 0, 50);
+    circle.x = 100;
+    circle.y = 100;
+
+    group.addChild(circle);
+
+    square.graphics.beginFill('red').drawRect(0, 0, 50, 50);
+    square.x = 200;
+    square.y = 100;
+
+    group.addChild(square);
+
+    introText.x = 200;
+    introText.y = 300;
+    introText.lineWidth = 200;
+
+    stage.addChild(introText);
+
+    c.Ticker.timingMode = c.Ticker.RAF;
+    c.Ticker.setFPS(60);
+
+    c.Ticker.addEventListener('tick', function(event) {
+        stage.update();
+    });
+
+});

@@ -1,0 +1,11 @@
+{
+    "name": "tutsplus-advanced-canvas",
+    "version": "0.0.1",
+    "author": "Sebastian Baroni",
+    "description": "Tuts plus lession files",
+    "main": "index.html",
+    "license": "MIT",
+    "dependencies": {
+        "easeljs": "*"
+    }
+}
